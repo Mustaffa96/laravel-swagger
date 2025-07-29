@@ -1,0 +1,25 @@
+{
+    "name": "laravel-swagger-crud",
+    "version": "1.0.0",
+    "description": "Laravel Swagger CRUD API with PostgreSQL",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "lint": "eslint resources/js --ext .js,.vue",
+        "lint:fix": "eslint resources/js --ext .js,.vue --fix"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "bootstrap": "^5.2.3",
+        "eslint": "^8.57.0",
+        "laravel-vite-plugin": "^0.8.0",
+        "postcss": "^8.4.31",
+        "sass": "^1.56.1",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "lodash": "^4.17.19"
+    }
+}
