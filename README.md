@@ -2,17 +2,22 @@
 
 A comprehensive CRUD API with file upload/download capabilities built with Laravel 10, PostgreSQL, and Swagger/OpenAPI documentation. This project follows SOLID principles, clean architecture, and is optimized for performance with zero-lint errors.
 
+> **Latest Update**: Enhanced DocumentController with comprehensive Swagger annotations, improved file handling, and robust error management.
+
 ## Features
 
 - ✅ **Complete CRUD Operations** - Create, Read, Update, Delete documents
-- ✅ **File Upload/Download** - Secure file handling with validation
+- ✅ **File Upload/Download** - Secure file handling with validation and binary response
 - ✅ **PostgreSQL Database** - Optimized for performance and scalability
-- ✅ **Swagger/OpenAPI Documentation** - Interactive API documentation
+- ✅ **Swagger/OpenAPI Documentation** - Interactive API documentation with comprehensive annotations
 - ✅ **Clean Architecture** - SOLID principles implementation
 - ✅ **Performance Optimized** - Efficient queries and caching
 - ✅ **Zero-Lint Errors** - Clean, maintainable code
 - ✅ **Comprehensive Comments** - Well-documented codebase
 - ✅ **pnpm Support** - Modern package management
+- ✅ **Enhanced Error Handling** - Robust exception management and user-friendly responses
+- ✅ **Advanced File Operations** - UUID-based file naming and secure storage
+- ✅ **Type Safety** - Full type hints and return type declarations
 
 ## Tech Stack
 
@@ -95,6 +100,14 @@ Once the server is running, you can access:
 - **API Info**: http://localhost:8000/api/info
 - **Health Check**: http://localhost:8000/api/health
 
+### Swagger Features
+
+- **Interactive Testing**: Test all endpoints directly from the documentation
+- **Request/Response Examples**: Comprehensive examples for all operations
+- **Schema Validation**: Detailed request and response schemas
+- **File Upload Support**: Binary file upload documentation
+- **Error Response Documentation**: Complete error handling scenarios
+
 ## API Endpoints
 
 ### Documents CRUD
@@ -157,6 +170,33 @@ curl -X POST http://localhost:8000/api/documents \
   -F "file=@/path/to/your/file.pdf"
 ```
 
+### Download Example
+
+```bash
+# Download file with proper headers
+curl -X GET http://localhost:8000/api/documents/1/download \
+  -H "Accept: application/json" \
+  --output downloaded_file.pdf
+```
+
+### Response Examples
+
+**Successful Upload Response:**
+```json
+{
+  "success": true,
+  "message": "Document uploaded successfully",
+  "data": {
+    "id": 1,
+    "title": "Sample Document",
+    "file_name": "sample.pdf",
+    "file_size": 1024000,
+    "mime_type": "application/pdf",
+    "download_url": "/api/documents/1/download"
+  }
+}
+```
+
 ## Development
 
 ### Code Standards
@@ -188,11 +228,14 @@ pnpm run lint:fix
 
 ## Security Features
 
-- **Input Validation**: Comprehensive request validation
-- **File Security**: Secure file storage outside web root
-- **Rate Limiting**: API endpoint protection
-- **Error Handling**: Secure error responses
+- **Input Validation**: Comprehensive request validation with Laravel Form Requests
+- **File Security**: Secure file storage outside web root with UUID naming
+- **Rate Limiting**: API endpoint protection against abuse
+- **Error Handling**: Secure error responses without sensitive information exposure
 - **CORS Configuration**: Proper cross-origin handling
+- **File Type Validation**: MIME type verification and file extension checking
+- **Path Traversal Protection**: Secure file path handling
+- **SQL Injection Prevention**: Eloquent ORM protection
 
 ## Deployment
 
@@ -239,6 +282,15 @@ For support and questions:
 - Review the code comments for implementation details
 
 ## Changelog
+
+### v1.1.0 (Latest)
+- Enhanced DocumentController with comprehensive Swagger annotations
+- Improved file download with proper binary response handling
+- Added detailed error handling and user-friendly messages
+- Enhanced type safety with full type hints
+- Improved file validation and security measures
+- Added comprehensive API response examples
+- Enhanced Swagger documentation with detailed schemas
 
 ### v1.0.0
 - Initial release with complete CRUD functionality
